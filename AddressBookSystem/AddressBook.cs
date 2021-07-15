@@ -52,5 +52,102 @@ namespace AddressBookSystem
                 Console.WriteLine("Email : " + C.Email);
             }
         }
+        /// <summary>
+        /// Method to edit contact
+        /// </summary>
+        public void EditContact()
+        {
+            Console.WriteLine("-----------------------------------------------");
+            Console.Write("Enter First Name of the contact to be edited : ");
+            string fName = Console.ReadLine();
+            Console.WriteLine("-----------------------------------------------");
+
+            foreach (Contact contact in Contacts)
+            {
+                if (contact.FirstName.Equals(fName))
+                {
+                    int fieldToBeEdited = 0;
+                    while (fieldToBeEdited != 9)
+                    {
+                        Console.WriteLine("Enter a field to edit :- ");
+                        Console.WriteLine("Press (1). to edit First Name");
+                        Console.WriteLine("Press (2). to edit Last Name");
+                        Console.WriteLine("Press (3). to edit Address");
+                        Console.WriteLine("Press (4). to edit City");
+                        Console.WriteLine("Press (5). to edit State");
+                        Console.WriteLine("Press (6). to edit zip");
+                        Console.WriteLine("Press (7). to edit Phone Number");
+                        Console.WriteLine("Press (8). to edit Email");
+                        Console.WriteLine("Press (9). To Exit");
+                        Console.WriteLine("----------------------------------------------");
+
+                        fieldToBeEdited = Convert.ToInt32(Console.ReadLine());
+
+                        switch (fieldToBeEdited)
+                        {
+                            case 1:
+                                Console.WriteLine("Edit First Name :- ");
+                                string firstName = Console.ReadLine();
+                                contact.FirstName = firstName;
+                                Console.WriteLine("First Name Edited Successfully.");
+                                break;
+
+                            case 2:
+                                Console.WriteLine("Edit Last Name :- ");
+                                string lastName = Console.ReadLine();
+                                contact.LastName = lastName;
+                                Console.WriteLine("Last Name Edited Successfully.");
+                                break;
+
+                            case 3:
+                                Console.WriteLine("Edit Address :- ");
+                                string address = Console.ReadLine();
+                                contact.Address = address;
+                                Console.WriteLine("Address Edited Successfully.");
+                                break;
+
+                            case 4:
+                                Console.WriteLine("Edit City :- ");
+                                string city = Console.ReadLine();
+                                contact.City = city;
+                                Console.WriteLine("City Edited Successfully.");
+                                break;
+
+                            case 5:
+                                Console.WriteLine("Edit State :- ");
+                                string state = Console.ReadLine();
+                                contact.State = state;
+                                Console.WriteLine("State Edited Successfully.");
+                                break;
+
+                            case 6:
+                                Console.WriteLine("Edit Zip :- ");
+                                int zip = Convert.ToInt32(Console.ReadLine());
+                                contact.Zip = zip;
+                                Console.WriteLine("Zip Edited Successfully.");
+                                break;
+
+                            case 7:
+                                Console.WriteLine("Edit Phone Number :- ");
+                                long phoneNumber = Convert.ToInt64(Console.ReadLine());
+                                contact.PhoneNumber = phoneNumber;
+                                Console.WriteLine("Phone Number Edited Successfully.");
+                                break;
+
+                            case 8:
+                                Console.WriteLine("Edit Email :- ");
+                                string email = Console.ReadLine();
+                                contact.Email = email;
+                                Console.WriteLine("Email Edited Successfully.");
+                                break;
+                        }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Enter a valid Name...");
+                }
+            }
+        }
     }
 }

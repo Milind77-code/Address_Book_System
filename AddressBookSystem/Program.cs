@@ -42,6 +42,9 @@ namespace AddressBookSystem
 
             addressBook.AddContact(firstName, lastName, address, city, state, zip, phoneNumber, email);
             addressBook.ShowContact();
+            addressBook.EditContact();
+            Console.WriteLine("----------------------------------------------");
+            addressBook.ShowContact();
             Console.WriteLine("----------------------------------------------");
         }
     }
