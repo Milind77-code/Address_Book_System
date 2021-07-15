@@ -40,17 +40,22 @@ namespace AddressBookSystem
         /// </summary>
         public void ShowContact()
         {
-            foreach (Contact C in Contacts)
+            if (Contacts.Count >= 1)
             {
-                Console.WriteLine("First Name : " + C.FirstName);
-                Console.WriteLine("Last Name : " + C.LastName);
-                Console.WriteLine("Address : " + C.Address);
-                Console.WriteLine("City : " + C.City);
-                Console.WriteLine("State : " + C.State);
-                Console.WriteLine("Zip : " + C.Zip);
-                Console.WriteLine("Phone Number : " + C.PhoneNumber);
-                Console.WriteLine("Email : " + C.Email);
+                foreach (Contact C in Contacts)
+                {
+                    Console.WriteLine("First Name : " + C.FirstName);
+                    Console.WriteLine("Last Name : " + C.LastName);
+                    Console.WriteLine("Address : " + C.Address);
+                    Console.WriteLine("City : " + C.City);
+                    Console.WriteLine("State : " + C.State);
+                    Console.WriteLine("Zip : " + C.Zip);
+                    Console.WriteLine("Phone Number : " + C.PhoneNumber);
+                    Console.WriteLine("Email : " + C.Email);
+                }
             }
+            else
+                Console.WriteLine("No contacts to Display.....");
         }
         /// <summary>
         /// Method to edit contact
@@ -148,6 +153,28 @@ namespace AddressBookSystem
                     Console.WriteLine("Enter a valid Name...");
                 }
             }
+
+        }
+        public void DeletePerson()
+        {
+            int NumOfPersons = 0;
+
+            ShowContact();
+
+            Console.Write("Enter the First Name of the person you want to delete :- ");
+            string firstName = Console.ReadLine();
+
+            for (int i = 0; i < Contacts.Count; i++)
+            {
+                if (Contacts[i].FirstName.Equals(firstName))
+                {
+                    NumOfPersons = 1;
+                    Contacts.RemoveAt(i);
+                    Console.WriteLine("Person Removed Successfully.");
+                }
+            }
+            if (NumOfPersons == 0)
+                Console.WriteLine("Person Not Found...");
         }
     }
 }
