@@ -5,7 +5,7 @@ namespace AddressBookSystem
     class Program
     {
         
-        // Address book program - UC6 able to Add multiple addressbook with unique name for addressBook
+        // Address book program -  able to Add multiple addressbook with unique name for addressBook
         static void Main()
         {
             Console.WriteLine("<--------Welcome to Address Book System-------->");

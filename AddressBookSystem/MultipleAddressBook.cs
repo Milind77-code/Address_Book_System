@@ -38,7 +38,7 @@ namespace AddressBookSystem
             else
             {
                 List<Contact> contactsList = new List<Contact>();
-                Console.WriteLine("address book created successfully....");
+                Console.WriteLine("Address book created successfully....");
                 Console.WriteLine("Add new Contacts? \n Press Y/N :");
                 char ch = Convert.ToChar(Console.ReadLine());
                 ch = Char.ToUpper(ch);
@@ -87,6 +87,21 @@ namespace AddressBookSystem
                 }
             }
             return null;
+        }
+        public void SearchContactsByCity(string cityName)
+        {
+            foreach (KeyValuePair<string, List<Contact>> item in dtAddressbook)
+            {
+                Console.WriteLine("Name of AddressBook: " + item.Key);
+                foreach (Contact items in item.Value)
+                {
+                    if (items.City.Contains(cityName))
+                    {
+                        Console.WriteLine($"Name: {items.FirstName + " " + items.LastName}, Phone Number: {items.PhoneNumber}, City: {items.City}");
+                        Console.WriteLine();
+                    }
+                }
+            }
         }
     }
 }

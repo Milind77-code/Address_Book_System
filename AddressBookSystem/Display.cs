@@ -18,11 +18,12 @@ namespace AddressBookSystem
             Console.WriteLine("------------------------------------------------");
             Console.WriteLine("Press (1). to Add New Addressbook");
             Console.WriteLine("Press (2). to View All Addressbooks");
-            Console.WriteLine("Press (3). to Exit Program");
+            Console.WriteLine("Press (3). Search Contacts By City");
+            Console.WriteLine("Press (4). to Exit Program");
             Console.WriteLine("------------------------------------------------");
 
             int mainInput = Convert.ToInt32(Console.ReadLine());
-            while (mainInput > 3 || mainInput < 0)
+            while (mainInput > 4 || mainInput < 0)
             {
                 Console.WriteLine("invalid input");
                 Console.WriteLine("Enter a valid input ");
@@ -51,6 +52,14 @@ namespace AddressBookSystem
                     Selection(addressBookName);
                     break;
                 case 3:
+                    //Search the contacts according to city
+                    Console.WriteLine("Enter the Name of city:");
+                    string cityName = Console.ReadLine();
+                    //search method here
+                    multipleAddressBook.SearchContactsByCity(cityName);
+                    DisplayChoiceAddressBook();
+                    break;
+                case 4:
                     //exit the program
                     Console.WriteLine("Exiting you safely...");
                     Console.WriteLine("Thank you.");
