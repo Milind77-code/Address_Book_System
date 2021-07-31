@@ -14,9 +14,7 @@ namespace AddressBookSystem
             // creating object
             Display display = new Display();
             display.DisplayChoiceAddressBook();
-            
-
-
+     
 
         }
     }

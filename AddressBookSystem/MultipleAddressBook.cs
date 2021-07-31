@@ -139,7 +139,7 @@ namespace AddressBookSystem
             {
                 foreach (KeyValuePair<string, List<Contact>> addressBooks in dtCities)
                 {
-                    Console.WriteLine("Contacts From City: " + addressBooks.Key);
+                    Console.WriteLine("Contacts From City: " + addressBooks.Key + " :" + addressBooks.Value.Count);
                     foreach (Contact items in addressBooks.Value)
                     {
                         Console.WriteLine($"Name: {items.FirstName + " " + items.LastName}, Phone Number: {items.PhoneNumber}, City: {items.City}, State: {items.State}" +
@@ -161,7 +161,7 @@ namespace AddressBookSystem
             {
                 foreach (KeyValuePair<string, List<Contact>> addressBooks in dtStates)
                 {
-                    Console.WriteLine("Contacts from State: " + addressBooks.Key);
+                    Console.WriteLine("Contacts from State: " + addressBooks.Key + " :" + addressBooks.Value.Count);
                     foreach (Contact items in addressBooks.Value)
                     {
                         Console.WriteLine($"Name: {items.FirstName + " " + items.LastName}, Phone Number: {items.PhoneNumber}, City: {items.City}, State: {items.State}" +
