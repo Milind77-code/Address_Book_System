@@ -239,7 +239,7 @@ namespace AddressBookSystem
         public void ImportContacts(string addressBookName, Dictionary<string, List<Contact>> addressBook)
         {
             List<Contact> contactsList = addressBook[addressBookName];
-            string filepath = @"C:\Users\Milind\OneDrive\Desktop\all Programs\Address_Book_System\AddressBookSystem\Contacts.txt";
+            string filepath = @"C:\Users\Milind\OneDrive\Desktop\all Programs\Address_Book_System\AddressBookSystem\ContactsCSVFile.csv";
             if (File.Exists(filepath))
             {
                 string[] contactsArray = File.ReadAllLines(filepath);
@@ -272,7 +272,7 @@ namespace AddressBookSystem
         public void ExportContacts(List<Contact> contactsList)
         {
             string[] contactArray = new string[contactsList.Count];
-            string filepath = @"C:\Users\Milind\OneDrive\Desktop\all Programs\Address_Book_System\AddressBookSystem\Contacts.txt";
+            string filepath = @"C:\Users\Milind\OneDrive\Desktop\all Programs\Address_Book_System\AddressBookSystem\ContactsCSVFile.csv";
             if (File.Exists(filepath))
             {
                 for (int i = 0; i < contactsList.Count; i++)
