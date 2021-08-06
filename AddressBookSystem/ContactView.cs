@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using static AddressBookSystem.Contact;
 
 namespace AddressBookSystem
 {
@@ -288,6 +290,35 @@ namespace AddressBookSystem
                 Console.WriteLine("File not found");
             }
 
+        }
+        /// <summary>
+        /// ability to read contacts list from json file
+        /// </summary>
+        /// <param name="contactlist"></param>
+        public void GetJsonData(List<Contact> contactlist)
+        {
+            string filepath = @"C:\Users\Milind\OneDrive\Desktop\all Programs\Address_Book_System\AddressBookSystem\JsonFile.json";
+            string jObject = File.ReadAllText(filepath);
+            Root root = JsonConvert.DeserializeObject<Root>(jObject);
+            contactlist.AddRange(root.contacts);
+            Console.WriteLine("Import successfull");
+        }
+        /// <summary>
+        /// ability to write contacts list to json file
+        /// </summary>
+        /// <param name="contactlist"></param>
+        public void SetJsonData(List<Contact> contactlist)
+        {
+            string filepath = @"C:\Users\Milind\OneDrive\Desktop\all Programs\Address_Book_System\AddressBookSystem\JsonFile.json";
+            Contact contact = NewContact(contactlist);
+            contactlist.Add(contact);
+            Root root = new Root
+            {
+                contacts = contactlist
+            };
+            string contactdata = JsonConvert.SerializeObject(root, Formatting.Indented);
+            File.WriteAllText(filepath, contactdata);
+            Console.WriteLine("Emport successfull");
         }
     }
 }

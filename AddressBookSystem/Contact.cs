@@ -13,7 +13,7 @@ namespace AddressBookSystem
     {
         void ValidateContactDetails();
     }
-    class Contact : IContactDetails
+    public class Contact : IContactDetails
     {
         //variables
         private string firstName;
@@ -120,6 +120,13 @@ namespace AddressBookSystem
             {
                 email = value;
             }
+        }
+        /// <summary>
+        /// class to access json file
+        /// </summary>
+        public class Root
+        {
+            public List<Contact> contacts { get; set; }
         }
 
         private bool ValidateFullName(string firstName, string lastName)

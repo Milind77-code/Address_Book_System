@@ -1,0 +1,34 @@
+{
+  "contacts": [
+    {
+      "FirstName": "Milind",
+      "LastName": "Dhote",
+      "Address": "Devendra Nagar",
+      "City": "Raipur",
+      "State": "Chhattisgarh",
+      "ZipCode": 492001,
+      "PhoneNumber": 9874563210,
+      "Email": "milinddhote77@gmail.com"
+    },
+    {
+      "FirstName": "Sarvesh",
+      "LastName": "Motlag",
+      "Address": "Amlidih",
+      "City": "Bhilai",
+      "State": "Chhattisgarh",
+      "ZipCode": 543214,
+      "PhoneNumber": 9847654321,
+      "Email": "sarvesh18@gmail.com"
+    },
+    {
+      "FirstName": "Abhishek",
+      "LastName": "Verma",
+      "Address": "Sunadr Nagar",
+      "City": "Kasol",
+      "State": "Himachal",
+      "ZipCode": 132411,
+      "PhoneNumber": 9632587410,
+      "Email": "verma21@gmail.com"
+    }
+  ]
+}

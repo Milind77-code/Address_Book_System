@@ -98,10 +98,12 @@ namespace AddressBookSystem
             Console.WriteLine("Press (2) to Add new Contact to list.");
             Console.WriteLine("Press (3) to Edit Contact in list.");
             Console.WriteLine("Press (4) to Delete a Contact from list.");
-            Console.WriteLine("Press (5) to Sort Contacts");
-            Console.WriteLine("Press (6) to Import Contacts");
-            Console.WriteLine("Press (7) to Export Contacts.");
-            Console.WriteLine("Press (8) to Go Back.");
+            Console.WriteLine("Press (5) to Sort Contacts.");
+            Console.WriteLine("Press (6) to Import Contacts from csv file.");
+            Console.WriteLine("Press (7) to Export Contacts from csv file.");
+            Console.WriteLine("press (8) to get contact from json file");
+            Console.WriteLine("press (9) to set contascts to json file.");
+            Console.WriteLine("Press (10) to Go Back.");
             Console.WriteLine("------------------------------------------------");
         }
         /// <summary>
@@ -192,6 +194,20 @@ namespace AddressBookSystem
                         Selection(addressBookName);
                         break;
                     case 8:
+                        contacts = addressBook[addressBookName];
+                        //get contacts from json file
+                        contactView.GetJsonData(contacts);
+                        DisplayChoice();
+                        Selection(addressBookName);
+                        break;
+                    case 9:
+                        contacts = addressBook[addressBookName];
+                        //set contacts to json file
+                        contactView.SetJsonData(contacts);
+                        DisplayChoice();
+                        Selection(addressBookName);
+                        break;
+                    case 10:
                         //exit from Contacts
                         DisplayChoiceAddressBook();
                         break;
