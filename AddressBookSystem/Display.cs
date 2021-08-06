@@ -167,6 +167,9 @@ namespace AddressBookSystem
                         //Sort Contacts By Person's Name
                         contacts = addressBook[addressBookName];
                         multipleAddressBook.SortAddressBookByName(contacts);
+                        multipleAddressBook.SortAddressBookByCity(contacts);
+                        multipleAddressBook.SortAddressBookByState(contacts);
+                        multipleAddressBook.SortAddressBookByZipcode(contacts);
                         DisplayChoice();
                         Selection(addressBookName);
                         break;
