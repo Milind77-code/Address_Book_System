@@ -56,6 +56,9 @@ namespace AddressBookSystem
                         {
                             contactsList.Add(newContact);
                             dtAddressbook.Add(name, contactsList);
+                            
+                            //utility to add contact person to city and state dictionary
+                            UtilityToAddContactToCityState(newContact);
                         }
                         else
                             Console.WriteLine("Contact Add failed");
@@ -128,6 +131,19 @@ namespace AddressBookSystem
             }
             return null;
         }
+        /// <summary>
+        /// ability to sort the contacts in list by Person's name
+        /// </summary>
+        /// <param name="contactsList"></param>
+        public void SortAddressBookByName(List<Contact> contactsList)
+        {
+            ContactView view = new ContactView();
+            contactsList.Sort((contact1, contact2) => contact1.FirstName.CompareTo(contact2.FirstName));
+            Console.WriteLine("Sorted Contacts By Name: ");
+            view.Listview(contactsList);
+        }
+
+       
         /// <summary>
         /// view Contacts by Cities
         /// </summary>

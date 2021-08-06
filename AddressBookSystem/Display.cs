@@ -98,7 +98,8 @@ namespace AddressBookSystem
             Console.WriteLine("Press (2) to Add new Contact to list.");
             Console.WriteLine("Press (3) to Edit Contact in list.");
             Console.WriteLine("Press (4) to Delete a Contact from list.");
-            Console.WriteLine("Press (5) to Go Back.");
+            Console.WriteLine("Press (5) Sort Contacts");
+            Console.WriteLine("Press (6) to Go Back.");
             Console.WriteLine("------------------------------------------------");
         }
         /// <summary>
@@ -163,6 +164,13 @@ namespace AddressBookSystem
                         Selection(addressBookName);
                         break;
                     case 5:
+                        //Sort Contacts By Person's Name
+                        contacts = addressBook[addressBookName];
+                        multipleAddressBook.SortAddressBookByName(contacts);
+                        DisplayChoice();
+                        Selection(addressBookName);
+                        break;
+                    case 6:
                         //exit from Contacts
                         DisplayChoiceAddressBook();
                         break;
