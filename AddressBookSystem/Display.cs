@@ -17,7 +17,7 @@ namespace AddressBookSystem
         {
             Console.WriteLine("------------------------------------------------");
             Console.WriteLine("Press (1). to Add New Addressbook");
-            Console.WriteLine("Press (2). to View All Addressbooks");
+            Console.WriteLine("Press (2). to perform CRUD Operations in Addressbooks");
             Console.WriteLine("Press (3). Search Contacts By City");
             Console.WriteLine("Press (4). View Contacts By City ");
             Console.WriteLine("Press (5). View Contacts By States ");
@@ -98,8 +98,10 @@ namespace AddressBookSystem
             Console.WriteLine("Press (2) to Add new Contact to list.");
             Console.WriteLine("Press (3) to Edit Contact in list.");
             Console.WriteLine("Press (4) to Delete a Contact from list.");
-            Console.WriteLine("Press (5) Sort Contacts");
-            Console.WriteLine("Press (6) to Go Back.");
+            Console.WriteLine("Press (5) to Sort Contacts");
+            Console.WriteLine("Press (6) to Import Contacts");
+            Console.WriteLine("Press (7) to Export Contacts.");
+            Console.WriteLine("Press (8) to Go Back.");
             Console.WriteLine("------------------------------------------------");
         }
         /// <summary>
@@ -113,7 +115,7 @@ namespace AddressBookSystem
                 Dictionary<string, List<Contact>> addressBook = multipleAddressBook.GetAddressBook();
                 //validation for input.
                 int input = Convert.ToInt32(Console.ReadLine());
-                while (input > 7 || input <= 0)
+                while (input > 8 || input <= 0)
                 {
                     Console.WriteLine("invalid input");
                     Console.WriteLine("Enter a valid input ");
@@ -140,6 +142,7 @@ namespace AddressBookSystem
                         contacts = addressBook[addressBookName];
                         Contact newContact = contactView.NewContact(contacts);
                         contacts.Add(newContact);
+                        multipleAddressBook.UtilityToAddContactToCityState(newContact);
                         contactView.Listview(contacts);
                         //Options for user
                         DisplayChoice();
@@ -174,6 +177,21 @@ namespace AddressBookSystem
                         Selection(addressBookName);
                         break;
                     case 6:
+                        //Import contacts from a file
+                        contactView.ImportContacts(addressBookName, addressBook);
+                        Console.WriteLine("Import SuccessFull!!");
+                        DisplayChoice();
+                        Selection(addressBookName);
+                        break;
+                    case 7:
+                        contacts = addressBook[addressBookName];
+                        //Export contacts from a file
+                        contactView.ExportContacts(contacts);
+                        Console.WriteLine("Export SuccessFull!!");
+                        DisplayChoice();
+                        Selection(addressBookName);
+                        break;
+                    case 8:
                         //exit from Contacts
                         DisplayChoiceAddressBook();
                         break;

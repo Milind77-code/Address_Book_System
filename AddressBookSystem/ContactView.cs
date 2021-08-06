@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace AddressBookSystem
@@ -229,6 +230,64 @@ namespace AddressBookSystem
             }
             Console.WriteLine("Enter Email: ");
             Person.Email = Console.ReadLine();
+        }
+        /// <summary>
+        /// ability to import contacts from a file
+        /// </summary>
+        /// <param name="addressBookName"></param>
+        /// <param name="addressBook"></param>
+        public void ImportContacts(string addressBookName, Dictionary<string, List<Contact>> addressBook)
+        {
+            List<Contact> contactsList = addressBook[addressBookName];
+            string filepath = @"C:\Users\Milind\OneDrive\Desktop\all Programs\Address_Book_System\AddressBookSystem\Contacts.txt";
+            if (File.Exists(filepath))
+            {
+                string[] contactsArray = File.ReadAllLines(filepath);
+                for (int i = 1; i < contactsArray.Length; i++)
+                {
+                    Contact contact = new Contact();
+                    string[] data = contactsArray[i].Split(',');
+                    contact.FirstName = data[0];
+                    contact.LastName = data[1];
+                    contact.Address = data[2];
+                    contact.City = data[3];
+                    contact.State = data[4];
+                    contact.ZipCode = Convert.ToInt32(data[5]);
+                    contact.PhoneNumber = Convert.ToInt64(data[6]);
+                    contact.Email = data[7];
+                    contact.ValidateContactDetails();
+                    contactsList.Add(contact);
+                }
+                addressBook[addressBookName] = contactsList;
+            }
+            else
+            {
+                Console.WriteLine("File Not Found");
+            }
+        }
+        /// <summary>
+        /// ability to Export contacts to a file
+        /// </summary>
+        /// <param name="contactsList"></param>
+        public void ExportContacts(List<Contact> contactsList)
+        {
+            string[] contactArray = new string[contactsList.Count];
+            string filepath = @"C:\Users\Milind\OneDrive\Desktop\all Programs\Address_Book_System\AddressBookSystem\Contacts.txt";
+            if (File.Exists(filepath))
+            {
+                for (int i = 0; i < contactsList.Count; i++)
+                {
+                    Contact contact = contactsList[i];
+                    contactArray[i] = contact.FirstName + ',' + contact.LastName + ',' + contact.Address + ',' + contact.City + ',' + contact.State + ',' + Convert.ToString(contact.ZipCode) + ',' + Convert.ToString(contact.PhoneNumber) + ',' + contact.Email;
+                }
+
+                File.AppendAllLines(filepath, contactArray, Encoding.UTF8);
+            }
+            else
+            {
+                Console.WriteLine("File not found");
+            }
+
         }
     }
 }
